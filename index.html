@@ -1,0 +1,80 @@
+<!-- 情報提供型のリンク -->
+<div class="info-teaser">
+    <div class="teaser-header">
+        <span class="new-badge">NEW</span>
+        <h3>最新地震分析データが公開されました</h3>
+    </div>
+    <div class="teaser-content">
+        <div class="data-preview">
+            <div class="data-item">
+                <span class="data-label">24時間以内の地震回数:</span>
+                <span class="data-value">12回</span>
+            </div>
+            <div class="data-item">
+                <span class="data-label">今後72時間の発生確率:</span>
+                <span class="data-value">32%</span>
+            </div>
+            <div class="data-item">
+                <span class="data-label">あなたの地域の危険度:</span>
+                <span class="data-value warning">中程度</span>
+            </div>
+        </div>
+        <a href="https://your-earthquake-map-site.com" class="info-link">
+            詳細な地震データと予測を見る
+        </a>
+    </div>
+</div>
+
+<style>
+.info-teaser {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.new-badge {
+    background: #ff4d4d;
+    color: white;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-right: 10px;
+}
+
+.data-preview {
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.data-item:last-child {
+    border-bottom: none;
+}
+
+.data-value.warning {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.info-link {
+    display: block;
+    text-align: center;
+    background: #2196F3;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+</style>
