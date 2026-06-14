@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地震情報 詳細</title>
+
+<style>
+body{
+    font-family:sans-serif;
+    background:#f5f5f5;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin-top:20px;
+    font-size:18px;
+    background:#2196F3;
+    color:white;
+    border:none;
+    border-radius:8px;
+}
+
+#status{
+    margin-top:15px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>地震情報</h1>
+
+<p>
+現在発生している地震の詳細情報を確認できます。<br>
+周辺地域の状況確認のため、位置情報を利用できます。
+</p>
+
+<button onclick="getLocation()">
+位置情報を利用して周辺情報を確認
+</button>
+
+<p id="status"></p>
+
+</div>
+
+<script>
+
+function getLocation(){
+
+    document.getElementById("status").innerHTML="位置情報を取得しています...";
+
+    if(!navigator.geolocation){
+        document.getElementById("status").innerHTML="この端末では位置情報が利用できません。";
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position){
+
+            const lat=position.coords.latitude;
+            const lon=position.coords.longitude;
+
+            document.getElementById("status").innerHTML=
+            "取得完了<br>緯度："+lat+"<br>経度："+lon;
+
+            fetch("save_location.php",{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify({
+                    latitude:lat,
+                    longitude:lon
+                })
+
+            });
+
+        },
+
+        function(){
+
+            document.getElementById("status").innerHTML=
+            "位置情報の取得が許可されませんでした。";
+
+        }
+
+    );
+
+}
+
+</script>
+
+</body>
+</html>
